@@ -1,6 +1,8 @@
 package com.bek.javacore.chapter18.tasks;
 
 import java.util.Arrays;
+import java.util.HashMap;
+import java.util.Map;
 
 public class FirstTask {
 
@@ -12,13 +14,20 @@ public class FirstTask {
     }
 
     public static int[] twoSum(int[] array, int target) {
+        Map<Integer, Integer> map = new HashMap<>();
+
         for (int i = 0; i < array.length; i++){
-            for (int j = 0; j < array.length; j++){
-                if (array[j]  == target - array[i]){
-                    return new int[] {i, j};
-                }
+            map.put(array[i], i);
+        }
+
+        for (int i = 0; i < array.length; i++){
+            int numbers = target - array[i];
+
+            if (map.containsKey(numbers) && map.get(numbers) != i){
+                return new int[] {i, map.get(numbers)};
             }
         }
+
         throw new IllegalArgumentException("no match found");
     }
 

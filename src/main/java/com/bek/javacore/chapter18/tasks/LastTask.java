@@ -8,10 +8,9 @@ public class LastTask {
 
     public static boolean isResult(int[] array){
         for (int i = 0; i < array.length; i++){
-            for (int j = i + 1; j < array.length; j++){
-                if (array[i] == array[j]){
-                    return true;
-                }
+
+            if (array[i] == array[i + 1]){
+                return true;
             }
         }
         return false;
